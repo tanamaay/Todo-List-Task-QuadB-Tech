@@ -1,42 +1,43 @@
 import React, { useState, memo } from 'react';
 import { useDispatch } from 'react-redux';
-// Import some actions method from 'todolistAction'
+// Importing specific action methods from 'todolistAction'
 import { addItem, removeAllItem } from '../action/todolistAction';
 
-//Style for text input, add button, remove all button
+// Style for text input, add button, remove all button
 const boxShadow = {
     boxShadow: 'none',
     WebkitBoxShadow: 'none'
 };
-//Style for update button, cancel button
+// Style for update button, cancel button
 const btnWidth = { width: '100%' };
 
 const AddNewItem = () => {
 
-    // useState for store new item
+    // useState for storing new item
     const [item, setItem] = useState('');
 
     // Dispatch method from 'react-redux'
     const dispatch = useDispatch();
 
-    // Add new item action handle
+    // Add new item action handler
     const handleForm = (e) => {
-        // Stop default event behaviour
+        // Prevent default form submission behavior
         e.preventDefault();
-        // Trim all white space from both side
+        // Trim whitespace from both sides of the input
         const trimUpdateText = item.trim();
         if (trimUpdateText !== '') {
-            // Add item action
+            // Dispatch add item action with trimmed text
             dispatch(addItem(trimUpdateText));
+            // Clear input field after adding item
             setItem('');
         }
     }
 
-    // Remove all list action handle
+    // Remove all list action handler
     const removeAllHandle = (e) => {
-        // Stop default event behaviour
+        // Prevent default button behavior
         e.preventDefault();
-        // Remove all item action
+        // Dispatch remove all items action
         dispatch(removeAllItem());
     }
 
@@ -50,7 +51,7 @@ const AddNewItem = () => {
                 >
                     <div className='row mb-3'>
                         <div className='col-12'>
-                            {/* Input to take new item */}
+                            {/* Input to add new item */}
                             <input
                                 className='form-control text-center border'
                                 style={boxShadow}
@@ -64,7 +65,7 @@ const AddNewItem = () => {
                     </div>
                     <div className='row justify-content-center'>
                         <div className="col-5 col-sm-4 p-0 mr-2">
-                            {/* Add new item action button */}
+                            {/* Add new item button */}
                             <input
                                 className='btn btn-light border addBtn'
                                 style={{ ...boxShadow, ...btnWidth }}
@@ -73,7 +74,7 @@ const AddNewItem = () => {
                             />
                         </div>
                         <div className='col-5 col-sm-4 p-0'>
-                            {/* Remove all list action button */}
+                            {/* Remove all items button */}
                             <button
                                 className='btn btn-light border removeAllBtn'
                                 style={{ ...boxShadow, ...btnWidth }}
