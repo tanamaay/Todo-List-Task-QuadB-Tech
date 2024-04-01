@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// Import some action method from 'todolistAction'
+// Importing specific action methods from 'todolistAction'
 import { selectItem, removeItem } from '../action/todolistAction';
-// Import some icons from 'Material-UI' website
+// Importing icons from Material-UI
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
@@ -10,15 +10,15 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
 const ItemList = () => {
 
-    // Being get todolist state from centralize state
+    // Getting todolist state from centralized state
     const myState = useSelector((state) => state.todolistReducer.todolist);
 
     // Dispatch method from 'react-redux'
     const dispatch = useDispatch();
 
-    // Item select action handle
+    // Item select action handler
     const selectHandle = (item, itemId) => {
-        //selectItem action
+        // Dispatch selectItem action
         dispatch(selectItem(item, itemId));
         // Remove class to update-row
         document.getElementById('update-row').classList.remove('d-none');
@@ -33,15 +33,15 @@ const ItemList = () => {
                 {/* Unordered-list */}
                 <ul className='list-group list-group-flush'>
                     {
-                        // render all item list
+                        // Render all item list
                         myState.map((item, itemId) =>
                             <li
                                 key={itemId}
                                 className='list-group-item'
                             >
-                                {/* item */}
+                                {/* Display item */}
                                 {item}
-                                {/* removeItem action */}
+                                {/* Remove item action */}
                                 <span
                                     onClick={() => dispatch(removeItem(itemId))}
                                     className='change-delete-icon float-right'
@@ -54,7 +54,7 @@ const ItemList = () => {
                                         <DeleteIcon />
                                     </span>
                                 </span>
-                                {/* selectHandle method */}
+                                {/* Edit item action */}
                                 <span
                                     onClick={() => selectHandle(item, itemId)}
                                     className='change-edit-icon float-right mr-2'
