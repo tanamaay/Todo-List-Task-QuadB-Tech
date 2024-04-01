@@ -1,11 +1,12 @@
 import React from 'react';
-import AddNewItem from './AddNewItem';
-import Header from './Header';
-import ItemList from './ItemList';
-import UpdateInput from './UpdateInput';
+import AddNewItem from './AddNewItem'; // Importing AddNewItem component
+import Header from './Header'; // Importing Header component
+import ItemList from './ItemList'; // Importing ItemList component
+import UpdateInput from './UpdateInput'; // Importing UpdateInput component
 
 const Todolist = () => {
     return (<>
+        {/* Main container */}
         <div className='container position-relative'>
             <div
                 className='row'
